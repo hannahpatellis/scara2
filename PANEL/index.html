@@ -1,193 +1,117 @@
 <!DOCTYPE html>
 <html>
+
 <head>
 	<meta charset="UTF-8">
-	<title>Scara 2</title>
-	<!-- General stylesheet -->
-	<link rel="stylesheet" href="assets/css/custom.css">
-	<!-- Font Awesome Pro 5 -->
-	<script defer src="assets/js/packs/brands.min.js"></script>
-	<script defer src="assets/js/packs/light.min.js"></script>
-	<script defer src="assets/js/packs/solid.min.js"></script>
-	<script defer src="assets/js/fontawesome.min.js"></script>
-	<!-- FT Scroller -->
-	<script src="assets/js/ftscroller.js"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<title>femcount</title>
+	<!-- CSS Normalize and Reset -->
+	<link rel="stylesheet" href="./assets/css/normalize.css" />
+	<!-- Font Awesome Pro 5 All -->
+	<link rel="stylesheet" href="./assets/css/fontawesome-all.min.css" />
+	<!-- Custom Font Stylesheet -->
+	<link rel="stylesheet" href="./assets/css/fonts.css" />
+	<!-- Custom CSS Styles -->
+	<link rel="stylesheet" href="./assets/css/custom.css" />
+
+	<script>
+		const { remote } = require('electron') // Make remote available to close the window
+		window.$ = window.jQuery = require('jquery') // jQuery used for DOM
+		const { DateTime } = require('luxon') // Luxon used to time processing
+	</script>
 </head>
+
 <body>
-<div class="container" id="index-container">
-
-	<!-- Index Header/COL 1 -->
-	<div class="index-col index-header">
-		<!-- Index Header: Greeting -->
-		<div class="index-greeting">
-			<h1>Good <span class="greeting-timeofday">afternoon</span>,</h1>
-			<h1>it's <span class="greeting-time">12:30 PM</span></h1>
-			<h1>on <span class="greeting-dayofweek">Thursday</span>,</h1>
-			<h1><span class="greeting-monthday">September 30th</span></h1>
+	<div class="wrap">
+		<div class="sidebar">
+			<div class="sidebar-logo"></div>
+			<div class="sidebar-nav-fade-top"></div>
+			<div class="sidebar-nav">
+				<ul class="sidebar-nav-list">
+					<li class="sidebar-nav-item selected">
+						<i class="fas fa-home"></i>
+					</li>
+					<li class="sidebar-nav-item">
+						<i class="fas fa-lightbulb"></i>
+					</li>
+					<li class="sidebar-nav-item">
+						<i class="fas fa-shield-alt"></i>
+					</li>
+					<li class="sidebar-nav-item">
+						<i class="fas fa-thermometer-half"></i>
+					</li>
+					<li class="sidebar-nav-item">
+						<i class="fas fa-microphone-alt"></i>
+					</li>
+					<li class="sidebar-nav-item">
+						<i class="fas fa-share-alt"></i>
+					</li>
+					<li class="sidebar-nav-item">
+						<i class="fas fa-cloud"></i>
+					</li>
+					<li class="sidebar-nav-item">
+						<i class="fas fa-calendar-alt"></i>
+					</li>
+					<li class="sidebar-nav-item">
+						<i class="fas fa-history"></i>
+					</li>
+					<li class="sidebar-nav-item">
+						<i class="fas fa-power-off"></i>
+					</li>
+				</ul>
+			</div>
+			<div class="sidebar-nav-fade-bottom"></div>
 		</div>
-		<!-- Index Header: Widgets -->
-		<div class="index-widgets">
-			<div class="index-widget">
-				<div class="index-widget-text">The house is<br /><span class="bold">armed</span></div>
-				<div class="index-widget-icon">
-						<span class="fa-layers fa-fw">
-							<i class="fal fa-square"></i>
-							<i class="fal fa-shield-check" data-fa-transform="shrink-8"></i>
-						</span>
+
+		<div class="stage">
+			<div class="stage-wrap">
+				<div class="stage-header">
+					Hello
+				</div>
+				<div>
+				<div class="stage-panel">
+					Things
+				</div>
+				<div class="stage-panel">
+					Things
+				</div>
+				<div class="stage-panel stage-panel-alt">
+					Things
+				</div>
+				<div class="stage-panel">
+					Things
+				</div>
+				<div class="stage-panel">
+					Things
+				</div>
+				<div class="stage-panel">
+					Things
 				</div>
 			</div>
-			<div class="index-widget">
-				<div class="index-widget-text"><span class="bold">Angelica</span><br />is not home</div>
-				<div class="index-widget-icon">
-						<span class="fa-layers fa-fw">
-							<i class="fal fa-square"></i>
-							<i class="fal fa-street-view" data-fa-transform="shrink-8"></i>
-						</span>
-				</div>
+			</div>
+		</div>
+
+		<div class="statusbar">
+			<div class="left">
+				<span class="statusbar-temp-out">81° OUTSIDE</span>
+				<span class="statusbar-temp-in">76° INSIDE</span>
+				<span class="statusbar-secstat">SYSTEM ARMED</span>
+			</div>
+			<div class="right">
+				<span class="statusbar-time">5:59 PM</span>
+				<span class="statusbar-date">FRI SEPT 8</span>
 			</div>
 		</div>
 	</div>
-
-	<div class="index-col spacer">
-		<img src="assets/img/spacer.png" />
-	</div>
-
-	<!-- Index List/COL 2 -->
-	<div class="index-col index-list" id="scrollable-list">
-		<ul class="index-mod-list">
-			<li class="module-link" id="security">
-				<div class="index-mod-item">
-					<div class="index-mod-icon">
-							<span class="fa-layers fa-fw">
-								<i class="fal fa-square"></i>
-								<i class="fal fa-shield-alt" data-fa-transform="shrink-8"></i>
-							</span>
-					</div>
-					<div class="index-mod-text"><span class="bold">Security</span></div>
-				</div>
-			</li>
-			<li class="module-link" id="lighting">
-				<div class="index-mod-item">
-					<div class="index-mod-icon">
-							<span class="fa-layers fa-fw">
-								<i class="fal fa-square"></i>
-								<i class="fal fa-lightbulb" data-fa-transform="shrink-8"></i>
-							</span>
-					</div>
-					<div class="index-mod-text"><span class="bold">Lighting</span></div>
-				</div>
-			</li>
-			<li class="module-link" id="scenes">
-				<div class="index-mod-item">
-					<div class="index-mod-icon">
-							<span class="fa-layers fa-fw">
-								<i class="fal fa-square"></i>
-								<i class="fal fa-home" data-fa-transform="shrink-8"></i>
-							</span>
-					</div>
-					<div class="index-mod-text"><span class="bold">Scenes</span></div>
-				</div>
-			</li>
-			<li class="module-link" id="temperature">
-				<div class="index-mod-item">
-					<div class="index-mod-icon">
-							<span class="fa-layers fa-fw">
-								<i class="fal fa-square"></i>
-								<i class="fal fa-snowflake" data-fa-transform="shrink-8"></i>
-							</span>
-					</div>
-					<div class="index-mod-text"><span class="bold">Temperature</span></div>
-				</div>
-			</li>
-			<li class="module-link" id="weather">
-				<div class="index-mod-item">
-					<div class="index-mod-icon">
-							<span class="fa-layers fa-fw">
-								<i class="fal fa-square"></i>
-								<i class="fal fa-cloud" data-fa-transform="shrink-8"></i>
-							</span>
-					</div>
-					<div class="index-mod-text"><span class="bold">Weather</span></div>
-				</div>
-			</li>
-			<li class="module-link" id="weather">
-				<div class="index-mod-item">
-					<div class="index-mod-icon">
-							<span class="fa-layers fa-fw">
-								<i class="fal fa-square"></i>
-								<i class="fal fa-calendar-alt" data-fa-transform="shrink-8"></i>
-							</span>
-					</div>
-					<div class="index-mod-text"><span class="bold">Today</span></div>
-				</div>
-			</li>
-			<li class="module-link" id="weather">
-				<div class="index-mod-item">
-					<div class="index-mod-icon">
-							<span class="fa-layers fa-fw">
-								<i class="fal fa-square"></i>
-								<i class="fal fa-wifi" data-fa-transform="shrink-8"></i>
-							</span>
-					</div>
-					<div class="index-mod-text"><span class="bold">Network</span></div>
-				</div>
-			</li>
-			<li class="module-link" id="weather">
-				<div class="index-mod-item">
-					<div class="index-mod-icon">
-							<span class="fa-layers fa-fw">
-								<i class="fal fa-square"></i>
-								<i class="fal fa-phone-volume" data-fa-transform="shrink-8"></i>
-							</span>
-					</div>
-					<div class="index-mod-text"><span class="bold">Intercom</span></div>
-				</div>
-			</li>
-			<li class="module-link" id="weather">
-				<div class="index-mod-item">
-					<div class="index-mod-icon">
-							<span class="fa-layers fa-fw">
-								<i class="fal fa-square"></i>
-								<i class="fal fa-hourglass-half" data-fa-transform="shrink-8"></i>
-							</span>
-					</div>
-					<div class="index-mod-text"><span class="bold">Timer</span></div>
-				</div>
-			</li>
-			<li class="module-link" id="exit">
-				<div class="index-mod-item">
-					<div class="index-mod-icon">
-							<span class="fa-layers fa-fw">
-								<i class="fal fa-square"></i>
-								<i class="fal fa-times" data-fa-transform="shrink-8"></i>
-							</span>
-					</div>
-					<div class="index-mod-text"><span class="bold">Exit</span></div>
-				</div>
-			</li>
-		</ul>
-	</div>
-
-</div>
-
-
-<div class="container" id="module-container">
-	<div class="module-arrow module-sb" id="backIndex">
-		<i class="fal fa-chevron-left"></i>
-	</div>
-
-	<div class="spacer module-sb">
-		<img src="assets/img/spacer.png" />
-	</div>
-	
-	<div class="module-wrapper module-sb">
-		
-	</div>
-</div>
-
-<script src="render.js"></script>
-
-<!-- Module Renders -->
-<script src="modules/weather/render.js"></script>
 </body>
+
+<script type="text/javascript">
+
+	window.$('#exit').click(function () {
+		var window = remote.getCurrentWindow()
+		window.close()
+	})
+
+</script>
+
 </html>

@@ -5,7 +5,12 @@ const url = require('url')
 let win
 
 function createWindow() {
-	win = new BrowserWindow({ width: 480, height: 320, frame: false})
+	win = new BrowserWindow({
+		frame: false,
+		width: 480,
+		height: 320,
+		icon: path.join(__dirname, 'assets/icons/scara2.png')
+	})
 
 	win.loadURL(url.format({
 		pathname: path.join(__dirname, 'index.html'),
@@ -15,7 +20,6 @@ function createWindow() {
 
 	win.on('closed', () => {
 		win = null
-		app.quit()
 	})
 }
 
