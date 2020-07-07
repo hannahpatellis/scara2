@@ -8,7 +8,7 @@
   },
   "author": "Alexandria 'Hannah' Isadora Patellis",
   "devDependencies": {
-    "electron": "~1.6.2"
+    "electron": "~7.2.4"
   },
   "dependencies": {
     "jquery": "^3.3.1",
